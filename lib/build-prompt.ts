@@ -106,6 +106,7 @@ export async function buildFinalMessages(
 
   let tempSystemMessage: Tables<"messages"> = {
     chat_id: "",
+    assistant_id: null,
     content: BUILT_PROMPT,
     created_at: "",
     id: processedChatMessages.length + "",
@@ -143,7 +144,9 @@ export async function buildFinalMessages(
 
           return {
             type: "image_url",
-            image_url: formedUrl
+            image_url: {
+              url: formedUrl
+            }
           }
         })
       ]
@@ -218,6 +221,7 @@ export async function buildGoogleGeminiFinalMessages(
 
   let tempSystemMessage: Tables<"messages"> = {
     chat_id: "",
+    assistant_id: null,
     content: BUILT_PROMPT,
     created_at: "",
     id: chatMessages.length + "",
